@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join NeuroTech UIUC</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <style>
+    /* ==== BASE ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #000, #080808);
+      color: white;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* ==== NAVBAR ==== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: #ff552e;
+    }
+
+    /* ==== MAIN SECTION ==== */
+    main {
+      margin-top: 7rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(90deg, #ff552e, #ff9966);
+  background-clip: text;            /* ← Standard property (for Firefox, Edge, etc.) */
+  -webkit-background-clip: text;    /* ← WebKit version (for Chrome, Safari) */
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+    h2 {
+      font-size: 1.3rem;
+      color: #ccc;
+      margin-bottom: 3rem;
+    }
+
+    /* ==== CTA BUTTON ==== */
+    .cta-btn {
+      background: linear-gradient(90deg, #ff552e, #ff9966);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(255, 85, 46, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 85, 46, 0.6);
+    }
+
+    /* ==== LINKS SECTION ==== */
+    .links-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-top: 5rem;
+    }
+
+    .join-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .join-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(255, 85, 46, 0.3);
+    }
+
+    .join-card h3 {
+      color: #ff9966;
+      margin-bottom: 1rem;
+    }
+
+    .qr-container {
+      margin: 1rem auto;
+      width: 150px;
+      height: 150px;
+    }
+
+    .link-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #1caad9;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .link-btn:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
+    <h3>NeuroTech at UIUC</h3>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="join.html" style="color: #ff552e;">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1>Join NeuroTech UIUC</h1>
+    <h2>Become a part of the next generation of innovators bridging neuroscience and technology</h2>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScU08_XQa5nSM7fXfIRmsrbsAnt8I0Yv6-zqVgkcdBToHZxgQ/viewform" target="_blank" class="cta-btn">Apply Here</a>
+
+    <div class="links-container">
+      <!-- Instagram -->
+      <div class="join-card">
+        <h3>Follow us on Instagram</h3>
+        <div class="qr-container" id="instaQR"></div>
+        <a href="https://www.instagram.com/neurotech.uiuc/?hl=en" target="_blank" class="link-btn">@neurotech.uiuc</a>
+      </div>
+
+      <!-- Discord -->
+      <div class="join-card">
+        <h3>Join our Discord</h3>
+        <div class="qr-container" id="discordQR"></div>
+        <a href="https://discord.gg/zJEGPVQh" target="_blank" class="link-btn">Join Discord Community</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // === Replace these with your real URLs ===
+    const instagramURL = "https://www.instagram.com/neurotech.uiuc/?hl=en";
+    const discordURL = "https://discord.gg/zJEGPVQh";
+
+    // === Generate QR Codes ===
+    new QRCode(document.getElementById("instaQR"), {
+      text: instagramURL,
+      width: 150,
+      height: 150,
+      colorDark: "#ff552e",
+      colorLight: "#000000",
+    });
+
+    new QRCode(document.getElementById("discordQR"), {
+      text: discordURL,
+      width: 150,
+      height: 150,
+      colorDark: "#7289da",
+      colorLight: "#000000",
+    });
+  </script>
+</body>
+</html>

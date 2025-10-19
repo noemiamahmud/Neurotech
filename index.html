@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuroTech UIUC</title>
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Header / Navbar -->
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
+    <h3>NeuroTech at UIUC</h3>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+
+<!-- Info tooltip -->
+
+  
+
+  <!-- Main 3D Brain Canvas -->
+<main id="brain-section">
+  <div id="brainOverlay" class="brain-overlay">
+    <h2>Welcome to NeuroTech @ UIUC!</h2>
+    <h1>🧠 Interact with the brain to learn more about NeuroTech!</h1>
+    <p class="click-to-start">Click anywhere to begin</p>
+  </div>
+
+  <div class="brain-embed">
+    <iframe 
+      id="brainFrame"
+      title="Brain Point Cloud"
+      frameborder="0"
+      allowfullscreen
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true"
+      allow="autoplay; fullscreen; xr-spatial-tracking"
+      src="https://sketchfab.com/models/c427ea0aee214141a78eba37bf9b76bb/embed">
+    </iframe>
+  </div>
+</main>
+
+  
+  <div id="infoCard" class="hidden">
+    <h3 id="infoTitle">Region</h3>
+    <p id="infoText">Info will appear here...</p>
+  </div>
+  <!-- Scripts -->
+ <!-- Three.js + GLTFLoader + OrbitControls -->
+ <!-- Load Three.js first -->
+<!-- ✅ Correct Three.js imports from the official JSDelivr CDN -->
+<!-- ✅ Correct non-module versions -->
+<!-- ✅ Load Three.js core -->
+<!-- ✅ Working classic Three.js + helpers from unpkg -->
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.152.2/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://unpkg.com/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
+
+<script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+
+<!-- ✅ Your own script -->
+<script src="script.js"></script>
+
+
+<script>
+  const overlay = document.getElementById("brainOverlay");
+  const brainFrame = document.getElementById("brainFrame");
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.add("hidden");
+
+    // Sketchfab loads automatically — no need to change src
+    // We'll just send the "start" event using postMessage
+    const iframe = brainFrame;
+    const client = new window.Sketchfab(iframe);
+    // This API doesn’t always initialize instantly, so we wrap in a small timeout
+    setTimeout(() => {
+      iframe.contentWindow.postMessage({ target: 'api.frame', method: 'start' }, '*');
+    }, 1000);
+  });
+</script>
+
+
+
+
+</body>
+</html>

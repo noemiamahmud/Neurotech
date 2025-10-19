@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuroTech UIUC | Team</title>
+
+  <!-- 🌙 Embedded Styles -->
+  <style>
+    /* ========================
+       🔧 Reset & Base
+    ======================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-y: auto;
+      height: auto;
+    }
+
+    /* ========================
+       🧭 Navbar
+    ======================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+      color: #fff;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ff552e;
+    }
+
+    /* ========================
+       👥 Team Page
+    ======================== */
+    #team-section {
+      margin-top: 6rem; /* space for navbar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: #000;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      color: #ff552e;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .points-embed {
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 85, 46, 0.3);
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .points-embed iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
+      padding: 1rem 0 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🔹 Navbar -->
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
+    <h3>NeuroTech at UIUC</h3>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🧮 Points Tracker Embed -->
+  <main id="team-section">
+    <h2 class="page-title">Member Points Tracker</h2>
+
+    <div class="points-embed">
+      <iframe
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7q94bBlMwDenqnvMH2g3h8UD1fFuZEoZhoEfZ5EVFu2r0MvZ-6-wM11mG7zMTu_IITQ-dFTHmEJVs/pubhtml"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <footer>
+      <p>NeuroTech UIUC 2025-2026 Points Tracker | Points Tracker auto-updates from Google Sheets</p>
+    </footer>
+  </main>
+</body>
+</html>
+

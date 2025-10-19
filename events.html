@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuroTech UIUC | Events</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ==== RESET ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+         overflow-y: auto;
+      height: auto;
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      font-family: "Poppins", sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* ==== NAVBAR ==== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ff552e;
+    }
+
+    /* ==== EVENTS SECTION ==== */
+    main {
+      margin-top: 7rem; /* Space for navbar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #ff552e;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .calendar-container {
+      width: 90%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 25px rgba(255, 85, 46, 0.2);
+    }
+
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      background-color: #000;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        height: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
+    <h3>NeuroTech at UIUC</h3>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="events.html" style="color:#ff552e;">Events</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1>Upcoming Events</h1>
+    <div class="calendar-container">
+      <!-- Replace YOUR_CALENDAR_LINK with your shared Google Calendar embed link -->
+      <iframe 
+        src="https://calendar.google.com/calendar/embed?src=ab783766334e7efa587c48d2ebe939e14b8017788143754c60081727cd503621%40group.calendar.google.com&ctz=America%2FChicago"
+        frameborder="0"
+        scrolling="no">
+      </iframe>
+    </div>
+    <footer>
+      <p>All events are hosted by NeuroTech UIUC. Stay tuned for workshops, demos, and hackathons!</p>
+    </footer>
+  </main>
+</body>
+</html>
