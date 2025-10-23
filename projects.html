@@ -6,160 +6,266 @@
   <title>NeuroTech UIUC | Projects</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* ==== RESET ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-  
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      font-family: "Poppins", sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-  
-    /* ==== NAVBAR ==== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
-      z-index: 100;
-    }
-  
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-  
-    .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-  
-    .nav-links a:hover {
-      color: #ff552e;
-    }
-    .projects-header {
-      text-align: center;
-      padding: 10rem 2rem 4rem 2rem;
-    }
+  /* ==== RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .projects-header h1 {
-  font-size: 2.8rem;
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* ==== NAVBAR ==== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ff552e;
+}
+
+/* ==== HEADER ==== */
+.projects-header {
+  text-align: center;
+  padding: 10rem 2rem 4rem 2rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(25,25,25,1));
+}
+
+.projects-header h1 {
+  font-size: 3rem;
   background: linear-gradient(90deg, #ff552e, #ff9966);
-  background-clip: text;            /* ← Standard property (for Firefox, Edge, etc.) */
-  -webkit-background-clip: text;    /* ← WebKit version (for Chrome, Safari) */
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
   animation: float 3s ease-in-out infinite;
 }
 
-    .projects-header p {
-      font-size: 1.2rem;
-      color: #ccc;
-      font-weight: 400;
-    }
-    /* ==== PROJECT SECTIONS ==== */
-    .project-section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 8rem 2rem 5rem 2rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-  
-    /* 🔥 CRITICAL FIX — allow scroll! */
-    main {
-      margin-top: 5rem; /* space for navbar */
-      display: flex;
-      flex-direction: column;
-    }
-  
-    /* ==== GALLERY ==== */
-    .gallery {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      max-width: 90%;
-      padding-bottom: 1rem;
-    }
-  
-    .gallery img {
-      width: 250px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-      flex-shrink: 0;
-      cursor: pointer;
-      opacity: 0.9;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-  
-    .gallery img:hover {
-      transform: scale(1.05);
-      opacity: 1;
-    }
-  
-    /* ==== TEXT ==== */
-    h2.project-title {
-      font-size: 1.8rem;
-      margin-top: 1rem;
-      color: #ff552e;
-    }
-  
-    .credits {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-top: 0.3rem;
-      margin-bottom: 1rem;
-    }
-  
-    .about {
-      max-width: 700px;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #ddd;
-      margin-bottom: 1rem;
-    }
-  
-    .email {
-      font-size: 0.9rem;
-      color: #1caad9;
-    }
-  
-    .email:hover {
-      text-decoration: underline;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-  </style>
-  
-</head>
-<body>
-      
+.projects-header p {
+  font-size: 1.2rem;
+  color: #ccc;
+  font-weight: 400;
+  margin-top: 1rem;
+}
 
+/* ==== PROJECT SECTIONS ==== */
+.project-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 6rem 8%;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.project-section:nth-child(even) {
+  flex-direction: row-reverse;
+  background: linear-gradient(90deg, rgba(20,20,20,1), rgba(0,0,0,1));
+}
+
+.project-section:nth-child(odd) {
+  background: linear-gradient(90deg, rgba(0,0,0,1), rgba(20,20,20,1));
+}
+
+.project-section:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 25px rgba(255,85,46,0.3);
+}
+
+/* ==== IMAGE ==== */
+.project-img {
+  flex: 1 1 45%;
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.9);
+  transition: all 0.5s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 1s ease forwards;
+}
+
+.project-img:hover {
+  filter: brightness(1);
+  transform: scale(1.03);
+}
+
+/* ==== TEXT ==== */
+.project-content {
+  flex: 1 1 45%;
+  text-align: left;
+  animation: fadeIn 1s ease 0.3s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+h2.project-title {
+  font-size: 2rem;
+  color: #ff784e;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 15px rgba(255,85,46,0.3);
+}
+
+.credits {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+.about {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 1rem;
+  max-width: 600px;
+}
+
+.email {
+  font-size: 0.9rem;
+  color: #1caad9;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+/* ==== ANIMATIONS ==== */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ==== PROJECT SECTIONS ==== */
+.project-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 6rem 8%;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.project-section:nth-child(even) {
+  flex-direction: row-reverse;
+  background: linear-gradient(90deg, rgba(20,20,20,1), rgba(0,0,0,1));
+}
+
+.project-section:nth-child(odd) {
+  background: linear-gradient(90deg, rgba(0,0,0,1), rgba(20,20,20,1));
+}
+
+.project-section:hover {
+  transform: scale(1.005);
+  box-shadow: 0 0 25px rgba(255,85,46,0.25);
+}
+
+/* ==== IMAGE ==== */
+.project-img {
+  flex: 1 1 50%;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.9);
+  transition: all 0.6s ease;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+.project-img:hover {
+  filter: brightness(1);
+  transform: scale(1.03);
+}
+
+/* ==== TEXT ==== */
+.project-content {
+  flex: 1 1 45%;
+  text-align: left;
+  animation: fadeIn 1s ease 0.3s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  max-width: 600px;
+}
+
+@media (max-width: 1100px) {
+  .project-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 4rem 5%;
+  }
+
+  .project-img {
+    flex: unset;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-content {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
   <!-- NAVBAR -->
   <nav class="navbar">
     <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
@@ -169,131 +275,114 @@
       <li><a href="projects.html" style="color: #ff552e;">Projects</a></li>
       <li><a href="team.html">Team</a></li>
       <li><a href="events.html">Events</a></li>
+      <li><a href="mnc.html">MNC</a></li>
       <li><a href="join.html">Join</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+
   <main>
     <section class="projects-header">
-        <h1>Explore NeuroTech Projects Here!</h1>
-        <p>Applications for the Spring 2026 semester open -> <strong>DATE TBD</strong></p>
-      </section>
-  <!-- ==== PROJECT SECTIONS ==== -->
-  <section class="project-section" id="project1">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Brainstorm</h2>
-    <p class="credits">Project Managers: Rushil Shah, Addison Torgerson<br>Members: A, B, C</p>
-    <p class="about">Creating an affordable VR-EEG strap and associated software (signal procesing, VR game, deep learning model) for accesible neurofeedback ADHD focus therapy.</p>
-    <p class="email">Contact: <a href="mailto:rushils4@illinois.edu">rushils4@illinois.edu </a></p>
-    <p class="email"><a href="mailto:art12@illinois.edu">art12@illinois.edu </a></p>
-    <p class="email"><a href="mailto:brainstorm.vrneurofeedback@gmail.com">brainstorm.vrneurofeedback@gmail.com </a></p>
-  </section>
+      <h1>Explore NeuroTech Projects</h1>
+      <p>Discover our interdisciplinary teams driving innovation in neurotechnology.</p>
+    </section>
 
-  <!-- Duplicate this block for all 9 projects -->
-  <section class="project-section" id="project2">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Brainwaves</h2>
-    <p class="credits">Project Manager: Ruchi Prakash<br>Members: A, B, C</p>
-    <p class="about">Using a podcast and social media to make educational information about neurotechnology accesible to a wider audience.</p>
-    <p class="email">Contact: <a href="mailto:ruchip2@illinois.edu">ruchip2@illinois.edu</a></p>
-  </section>
+    <!-- PROJECT TEMPLATE -->
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/DSCF7716.JPG');"></div>
+      <div class="project-content">
+        <h2 class="project-title">Brainstorm</h2>
+        <p class="credits">Project Managers: Rushil Shah, Addison Torgerson</p>
+        <p class="about">Developing an affordable VR-EEG system for accessible neurofeedback therapy targeting ADHD and focus improvement through deep learning and interactive design.</p>
+        <a class="email" href="mailto:rushils4@illinois.edu">rushils4@illinois.edu</a>
+        <a class="email" href="mailto:art12@illinois.edu">art12@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project3">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">CortexCodec</h2>
-    <p class="credits">Project Managers: Grace He, Tanisha Mandal <br>Members: A, B, C</p>
-    <p class="about">Music Decoding from EEG signals - gaining an understanding of EEG signals denoising and machine learning applications.</p>
-    <p class="email">Contact: <a href="mailto:gracehe3@illinois.edu">gracehe3@illinois.edu </a></p>
-    <p class="email"><a href="mailto:mandal7@illinois.edu">mandal7@illinois.edu </a></p>
-  </section>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/IMG_0DF3498D90AA-1.jpeg');"></div>
+      <div class="project-content">
+        <h2 class="project-title">Brainwaves</h2>
+        <p class="credits">Project Manager: Ruchi Prakash</p>
+        <p class="about">Using podcasts and social media to make neurotechnology education accessible and engaging for a global audience.</p>
+        <a class="email" href="mailto:ruchip2@illinois.edu">ruchip2@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project4">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Magazine</h2>
-    <p class="credits">Project Manager: Ananya Tak<br>Members: A, B, C</p>
-    <p class="about">Annual magazine publication of recent developments in Neurotechnology.</p>
-    <p class="email">Contact: <a href="mailto:ananyat4@illinois.edu">ananyat4@illinois.edu</a></p>
-  </section>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/cortexcodecpm.jpg');"></div>
+      <div class="project-content">
+        <h2 class="project-title">CortexCodec</h2>
+        <p class="credits">Project Managers: Grace He, Tanisha Mandal</p>
+        <p class="about">Applying AI and signal processing to decode music from EEG brain activity, exploring the intersection of neuroscience and creativity.</p>
+        <a class="email" href="mailto:gracehe3@illinois.edu">gracehe3@illinois.edu</a>
+        <a class="email" href="mailto:mandal7@illinois.edu">mandal7@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project5">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Neurify</h2>
-    <p class="credits">Project Managers: Sam Kim, Isabella Machaj<br>Members: A, B, C</p>
-    <p class="about">Customizing Spotify queues based on current emotion and focus. Learn how to stream real-time EEG signals for processing and classification.</p>
-    <p class="email">Contact: <a href="mailto:samuel57@illinois.edu">samuel57@illinois.edu </a></p>
-    <p class="email"><a href="mailto:imach2@illinois.edu">imach2@illinois.edu </a></p>
-  </section>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/groupphoto.jpg');"></div>
+      <div class="project-content">
+        <h2 class="project-title">NTX Magazine</h2>
+        <p class="credits">Project Manager: Ananya Tak</p>
+        <p class="about">Annual publication highlighting innovations in neurotechnology from academia, industry, and our own student teams.</p>
+        <a class="email" href="mailto:ananyat4@illinois.edu">ananyat4@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project6">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">NeuroBot</h2>
-    <p class="credits">Project Managers: Moukthika Nellutla, Tanvi Kurundkar, Pari Kulkarni <br>Members: A, B, C</p>
-    <p class="about">Using EEG data to detect emotion for a chatbot that can be used to reccomend users on what actions to take to improve their mental state.</p>
-    <p class="email">Contact: <a href="mailto:mn38@illinois.edu">mn38@illinois.edu </a></p>
-    <p class="email"><a href="mailto:tanvirk3@illinois.edu">tanvirk3@illinois.edu </a></p>
-    <p class="email"><a href="mailto:pari5@illinois.edu">pari5@illinois.edu </a></p>
-  </section>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/neurify.jpg');"></div>
+      <div class="project-content">
+        <h2 class="project-title">Neurify</h2>
+        <p class="credits">Project Managers: Sam Kim, Isabella Machaj</p>
+        <p class="about">Creating AI-driven playlists that adapt to users’ emotions and focus levels using real-time EEG signal classification.</p>
+        <a class="email" href="mailto:samuel57@illinois.edu">samuel57@illinois.edu</a>
+        <a class="email" href="mailto:imach2@illinois.edu">imach2@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project7">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Neuromarketing</h2>
-    <p class="credits">Project Manager: Alexia Rendon<br>Members: A, B, C</p>
-    <p class="about">Evaluating how advertisements impact attention and emotional engagement using accessible neuro marketing tools. Will create test ad variants.</p>
-    <p class="email">Contact: <a href="mailto:arend4@illinois.edu">arend4@illinois.edu</a></p>
-  </section>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/neurobot.JPG');"></div>
+      <div class="project-content">
+        <h2 class="project-title">NeuroBot</h2>
+        <p class="credits">Project Managers: Moukthika Nellutla, Tanvi Kurundkar, Pari Kulkarni</p>
+        <p class="about">Building an EEG-driven chatbot capable of recognizing emotional states and recommending personalized self-regulation actions.</p>
+        <a class="email" href="mailto:mn38@illinois.edu">mn38@illinois.edu</a>
+        <a class="email" href="mailto:tanvirk3@illinois.edu">tanvirk3@illinois.edu</a>
+        <a class="email" href="mailto:pari5@illinois.edu">pari5@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project8">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Neurowalker</h2>
-    <p class="credits">Project Managers: Caroline Liu, Nathan Magsino <br>Members: A, B, C</p>
-    <p class="about">Building an interactive VR tool that allows students to explore and visualize 3D models of neural pathways, aiding in the teaching of neuroanatomy.</p>
-    <p class="email">Contact: <a href="mailto:cal12@illinois.edu">cal12@illinois.edu </a></p>
-    <p class="email"><a href="mailto:nmags@illinois.edu">nmags@illinois.edu </a></p>
-  </section>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/marketing.JPG');"></div>
+      <div class="project-content">
+        <h2 class="project-title">Neuromarketing</h2>
+        <p class="credits">Project Manager: Alexia Rendon</p>
+        <p class="about">Evaluating how advertisements impact attention and emotion using neurophysiological tools and eye-tracking interfaces.</p>
+        <a class="email" href="mailto:arend4@illinois.edu">arend4@illinois.edu</a>
+      </div>
+    </section>
 
-  <section class="project-section" id="project9">
-    <div class="gallery">
-      <img src="https://via.placeholder.com/250x180/ff552e/000?text=Image+1">
-      <img src="https://via.placeholder.com/250x180/222/fff?text=Image+2">
-      <img src="https://via.placeholder.com/250x180/444/fff?text=Image+3">
-    </div>
-    <h2 class="project-title">Research & Apply</h2>
-    <p class="credits">Project Manager: Abhinav Bachu<br>Members: A, B, C</p>
-    <p class="about">Researching problem areas in neurophysiology to build physcial/computational prototypes such as EEG rehab feedback and robotic motion mimicry systems.</p>
-    <p class="email">Contact: <a href="mailto:abach8@illinois.edu">abach8@illinois.edu</a></p>
-  </section>
-    </main>
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/IMG_7666.jpg');"></div>
+      <div class="project-content">
+        <h2 class="project-title">NeuroWalker</h2>
+        <p class="credits">Project Managers: Caroline Liu, Nathan Magsino</p>
+        <p class="about">Creating an immersive VR platform for visualizing neural pathways and structures to enhance neuroscience education.</p>
+        <a class="email" href="mailto:cal12@illinois.edu">cal12@illinois.edu</a>
+        <a class="email" href="mailto:nmags@illinois.edu">nmags@illinois.edu</a>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="project-img" style="background-image: url('assets/codingimage.jpg');"></div>
+      <div class="project-content">
+        <h2 class="project-title">Research & Apply</h2>
+        <p class="credits">Project Manager: Abhinav Bachu</p>
+        <p class="about">Developing computational and physical neuroprosthetic prototypes addressing rehabilitation and motion feedback challenges.</p>
+        <a class="email" href="mailto:abach8@illinois.edu">abach8@illinois.edu</a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

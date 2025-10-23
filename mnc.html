@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNC 2026 | NeuroTech@UIUC</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* === General Styles === */
+    body {
+    overflow-y: auto;
+      background: #000;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      color: #ff784e;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(255, 85, 46, 0.3);
+    }
+
+    p {
+      text-align: center;
+      line-height: 1.8;
+      color: #ddd;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 4rem 8%;
+      position: relative;
+    }
+
+    /* === Hero Section === */
+    .mnc-hero {
+      position: relative;
+      text-align: center;
+      background: linear-gradient(to bottom right, rgba(10,10,10,0.9), rgba(20,20,20,0.9)), url('assets/midwest-map.png') center/cover no-repeat;
+      padding: 8rem 8% 10rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mnc-hero img.mnc-map {
+      width: 40%;
+      max-width: 400px;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 25px rgba(132, 230, 245, 0.5));
+    }
+
+    .mnc-hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #ff552e, #ff9966);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero-info {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* === Digital Countdown Clock === */
+    #countdown {
+      margin-top: 2rem;
+      font-family: "Orbitron", monospace;
+      font-size: 2rem;
+      color: #00ffcc;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      padding: 0.8rem 1.5rem;
+      display: inline-block;
+      letter-spacing: 2px;
+      box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 15px rgba(0,255,204,0.2); }
+      to { box-shadow: 0 0 30px rgba(0,255,204,0.6); }
+    }
+
+    /* === Parallax Banners === */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .p1 { background-image: url('assets/BackgroundImage2.jpg'); }
+    .p2 { background-image: url('assets/BackgroundImage.jpg'); }
+    .p3 { background-image: url('assets/BackgroundImage3.avif'); }
+
+    /* === Carousel for “Who We Are” === */
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+
+    .carousel img {
+      flex: 0 0 auto;
+      width: 500px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: grab;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 85, 46, 0.4);
+    }
+
+    /* === Event Highlights Section === */
+    .event-photos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .event-photos img {
+      width: 45%;
+      min-width: 400px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 85, 46, 0.25);
+      transition: transform 0.4s ease;
+    }
+
+    .event-photos img:hover {
+      transform: scale(1.03);
+    }
+
+    /* === Schedule Cards === */
+    .schedule {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .day-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,85,46,0.05));
+      border: 1px solid rgba(255,85,46,0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 320px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .day-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(255,85,46,0.4);
+    }
+
+    .day-card h3 {
+      color: #ff9966;
+      margin-bottom: 0.8rem;
+    }
+
+    /* === Dropdown === */
+    .dropdown {
+      background: #111;
+      border: 1px solid rgba(255,85,46,0.3);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      width: 90%;
+      margin: 2rem auto;
+      color: #ff552e;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-align: center;
+    }
+
+    .dropdown:hover {
+      background: rgba(255,85,46,0.1);
+    }
+
+    .dropdown-content {
+      display: none;
+      margin: 1rem auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 1.5rem;
+      color: #ddd;
+      width: 90%;
+      text-align: center;
+    }
+
+    .dropdown.active + .dropdown-content {
+      display: block;
+    }
+
+    /* === Get Involved Slideshow === */
+.get-involved {
+  text-align: center;
+  position: relative;
+  padding-bottom: 6rem;
+}
+
+.slideshow-container {
+  display: none;
+  position: relative;
+  max-width: 100%;
+  height: 70vh;
+  margin: 2rem auto 0;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255,85,46,0.3);
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+  animation: fadeSlide 1s ease-in-out;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === Overlay Text === */
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.slide-overlay h3 {
+  font-size: 2rem;
+  color: #ff784e;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(255, 85, 46, 0.3);
+}
+
+.slide-overlay p {
+  max-width: 800px;
+  font-size: 1.1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* === Navigation Arrows === */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 1rem;
+  margin-top: -22px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+  transition: 0.3s ease;
+  border-radius: 3px;
+  user-select: none;
+  background: rgba(0,0,0,0.3);
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(255,85,46,0.5);
+}
+
+.next { right: 0; }
+.prev { left: 0; }
+
+
+    /* === Contact === */
+    .contact {
+      text-align: center;
+      padding-bottom: 4rem;
+    }
+
+    .contact a {
+      color: #ff552e;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
+    <h3>NeuroTech at UIUC</h3>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="mnc.html" style="color:#ff552e;">MNC</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="mnc-hero">
+    <img src="assets/MidwestRegionMap.jpg" alt="Midwest Region Map" class="mnc-map" />
+    <h1>Midwest NeuroTechnology Conference 2026</h1>
+    <p class="hero-info">
+      University of Illinois Urbana-Champaign<br>
+      March 27–29, 2026<br>
+      Hosted by <strong>NeuroTech @ UIUC</strong><br>
+    </p>
+    <div id="countdown">Loading...</div>
+  </section>
+
+  <!-- PARALLAX 1 -->
+  <div class="parallax p1">Who We Are</div>
+
+  <section>
+    <h2>Who We Are</h2>
+    <p>NeuroTechX@UIUC is a student-led organization dedicated to advancing neurotechnology through hands-on projects, interdisciplinary collaboration, and innovation.</p>
+    <div class="carousel">
+      <img src="assets/NeuroTech_EXEC.JPG" alt="Team 1">
+      <img src="assets/IMG_7094.jpg" alt="Team 2">
+      <img src="assets/DSCF7455.JPG" alt="Team 3">
+      <img src="assets/IMG_7666.jpg" alt="Team 4">
+    </div>
+  </section>
+
+  <!-- PARALLAX 2 -->
+  <div class="parallax p2">Event Highlights</div>
+
+  <section>
+    <h2>Event Highlights</h2>
+    <p>Join us for workshops, speaker sessions, hackathons, and showcases that explore the frontiers of neurotechnology, AI, and human-computer interaction.</p>
+    <div class="event-photos">
+      <img src="assets/IMG_7992.jpg" alt="Event 1">
+      <img src="assets/image.jpg" alt="Event 2">
+    </div>
+  </section>
+
+  <!-- PARALLAX 3 -->
+  <div class="parallax p3">Schedule</div>
+
+  <section>
+    <h2>Schedule at a Glance</h2>
+    <div class="schedule">
+      <div class="day-card"><h3>Day 1 — Kickoff</h3><p>Evening check-in, workshops, keynote + dinner, hackathon prompt reveal.</p></div>
+      <div class="day-card"><h3>Day 2 — Workshops & Showcase</h3><p>Morning workshops, networking lunch, showcase, and speaker dinner.</p></div>
+      <div class="day-card"><h3>Day 3 — Finals & Awards</h3><p>Final check-in, keynote lunch, demos, judging, and awards ceremony.</p></div>
+    </div>
+  </section>
+
+  <!-- DROPDOWN -->
+  <!-- GET INVOLVED (Slideshow Presentation) -->
+<section class="get-involved">
+    <h2>Get Involved!</h2>
+    <p>Be part of the growing Midwest neurotech network — connect, recruit, and inspire.</p>
+    <div class="dropdown" onclick="toggleSlideshow()">Explore Sponsor Opportunities</div>
+  
+    <!-- Slideshow Container -->
+    <div class="slideshow-container" id="sponsor-slideshow">
+      <div class="slide active" style="background-image: url('assets/IMG_5868-scaled.jpg');">
+        <div class="slide-overlay">
+          <h3>Brand Visibility</h3>
+          <p>Your company logo featured across all conference materials, media, and merchandise — reaching students, researchers, and professionals across the Midwest.</p>
+        </div>
+      </div>
+  
+      <div class="slide" style="background-image: url('assets/mason_image_8_21_20.jpg');">
+        <div class="slide-overlay">
+          <h3>Recruitment</h3>
+          <p>Gain access to top interdisciplinary talent in neuroscience, computer science, and engineering through hackathon, workshops, and networking events.</p>
+        </div>
+      </div>
+  
+      <div class="slide" style="background-image: url('assets/driving-campustown.jpg');">
+        <div class="slide-overlay">
+          <h3>Networking</h3>
+          <p>Engage directly with academia and industry thought leaders through panels, keynote dinners, and interactive showcases.</p>
+        </div>
+      </div>
+  
+      <div class="slide" style="background-image: url('assets/convocation_0_0.jpg');">
+        <div class="slide-overlay">
+          <h3>Support Innovation</h3>
+          <p>Empower the next generation of neurotech innovators and help advance technologies that improve health, accessibility, and cognition.</p>
+        </div>
+      </div>
+  
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+  </section>
+  
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <p><a href="mailto:neurotechatuiuc@gmail.com">neurotechatuiuc@gmail.com</a></p>
+  </section>
+
+  <script>
+    // Digital Countdown Clock
+    const countdown = document.getElementById('countdown');
+    const eventDate = new Date("March 27, 2026 00:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+    }, 1000);
+
+    function toggleDropdown(element) {
+      element.classList.toggle('active');
+    }
+  </script>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.getElementsByClassName('slide');
+    const slideshow = document.getElementById('sponsor-slideshow');
+    
+    function toggleSlideshow() {
+      slideshow.style.display = slideshow.style.display === 'block' ? 'none' : 'block';
+    }
+    
+    function showSlide(n) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+    
+    function changeSlide(n) {
+      showSlide(currentSlide + n);
+    }
+    
+    // Auto-slide every 6 seconds
+    setInterval(() => {
+      if (slideshow.style.display === 'block') {
+        changeSlide(1);
+      }
+    }, 6000);
+    
+    // Initialize first slide
+    showSlide(0);
+    </script>
+    
+</body>
+</html>
