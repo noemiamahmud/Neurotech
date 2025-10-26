@@ -123,3 +123,60 @@ function animate() {
 }
 
 window.onload = init;
+// ================================
+// ✨ FLOATY TEXT ON CLICK (after start)
+// ================================
+const floatLayer = document.getElementById("floaty-layer");
+let floatyActive = false; // <- flag to ensure only activates after start
+
+const floatMessages = [
+  "🧠 Innovation!",
+  "💡 NeuroTech at UIUC!",
+  "⚙️ Brain meets code!",
+  "🎧 BCI in action!",
+  "📊 Data + Mind!",
+  "🌐 VR Neurofeedback!",
+  "💥 Synaptic Sparks!",
+  "🧬 Neuroengineering!"
+];
+
+let floatIndex = 0;
+
+// 1️⃣ Wait for user to click “Tap anywhere to begin”
+const overlay = document.getElementById("brainOverlay");
+const brainFrame = document.getElementById("brainFrame");
+
+overlay.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  const iframe = brainFrame;
+  const client = new window.Sketchfab(iframe);
+
+  // After model loads, allow floaty text
+  setTimeout(() => {
+    floatyActive = true;
+  }, 1500);
+
+  // Trigger Sketchfab start
+  setTimeout(() => {
+    iframe.contentWindow.postMessage({ target: 'api.frame', method: 'start' }, '*');
+  }, 1000);
+});
+
+// 2️⃣ Spawn bubbles only after activation
+document.addEventListener("click", (e) => {
+  if (!floatyActive) return; // don’t spawn before model starts
+  if (e.target.closest(".navbar")) return; // ignore navbar
+
+  const bubble = document.createElement("div");
+  bubble.classList.add("floating-text");
+  bubble.textContent = floatMessages[floatIndex];
+  floatIndex = (floatIndex + 1) % floatMessages.length;
+
+  const offsetX = (Math.random() - 0.5) * 60;
+  const offsetY = (Math.random() - 0.5) * 30;
+  bubble.style.left = `${e.clientX + offsetX}px`;
+  bubble.style.top = `${e.clientY + offsetY}px`;
+
+  floatLayer.appendChild(bubble);
+  setTimeout(() => bubble.remove(), 2200);
+});
