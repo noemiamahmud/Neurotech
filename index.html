@@ -1,283 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>NeuroTech UIUC</title>
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* ==== GENERAL RESET ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      font-family: "Poppins", sans-serif;
-      background: #000;
-      color: #fff;
-    }
-
-    /* ==== NAVBAR ==== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1000;
-    }
-
-    .navbar .logo {
-      width: 45px;
-      height: 45px;
-    }
-
-    .navbar h3 {
-      color: #fff;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-left: 10px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: #ff552e;
-    }
-
-    /* Hamburger Menu Button */
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      color: #ff552e;
-      cursor: pointer;
-    }
-
-    /* Mobile Nav */
-    @media (max-width: 850px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.95);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        padding: 1.5rem 0;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .navbar h3 {
-        font-size: 1rem;
-      }
-    }
-
-    /* ==== HERO SECTION ==== */
-    #brain-section {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at center, #0a0a0a 10%, #000 100%);
-      overflow: hidden;
-    }
-
-    .brain-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.75);
-      text-align: center;
-      padding: 1rem;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    .brain-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .brain-overlay h2 {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      color: #ff9966;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 10px rgba(255, 85, 46, 0.3);
-    }
-
-    .brain-overlay h1 {
-      font-size: clamp(1rem, 3vw, 1.6rem);
-      color: #ccc;
-      max-width: 800px;
-      margin-bottom: 1rem;
-    }
-
-    .click-to-start {
-      font-size: 1rem;
-      color: #ff552e;
-      opacity: 0.8;
-      animation: blink 1.8s infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0.4; }
-    }
-
-    /* ==== IFRAME (3D Brain) ==== */
-    .brain-embed {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* ==== INFO CARD ==== */
-    #infoCard {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      background: rgba(20, 20, 20, 0.85);
-      padding: 1rem 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 85, 46, 0.3);
-      color: #fff;
-      font-size: 0.9rem;
-      width: 280px;
-      z-index: 999;
-      transition: opacity 0.3s ease;
-    }
-
-    #infoCard.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* ==== RESPONSIVE FIXES ==== */
-    @media (max-width: 600px) {
-      #infoCard {
-        bottom: 0.5rem;
-        right: 0.5rem;
-        width: 220px;
-        font-size: 0.8rem;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div style="display: flex; align-items: center;">
-      <img src="assets/logo.png" alt="NeuroTech Logo" class="logo" />
-      <h3>NeuroTech at UIUC</h3>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="team.html">NeuroHack</a></li>
-      <li><a href="mnc.html">MNC</a></li>
-      <li><a href="join.html">Join</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-      ☰
-    </div>
-  </nav>
 
-  <!-- 3D Brain Section -->
-  <main id="brain-section">
-    <div id="brainOverlay" class="brain-overlay">
-      <h2>Welcome to NeuroTech @ UIUC!</h2>
-      <h1>🧠 Interact with the brain to learn more about NeuroTech!</h1>
-      <p class="click-to-start">Tap anywhere to begin</p>
-    </div>
-
-    <div class="brain-embed">
-      <iframe 
-        id="brainFrame"
-        title="Brain Point Cloud"
-        allowfullscreen
-        mozallowfullscreen="true"
-        webkitallowfullscreen="true"
-        allow="autoplay; fullscreen; xr-spatial-tracking"
-        src="https://sketchfab.com/models/c427ea0aee214141a78eba37bf9b76bb/embed">
-      </iframe>
-    </div>
-  </main>
-
-  <!-- Info Card -->
-  <div id="infoCard" class="hidden">
-    <h3 id="infoTitle">Region</h3>
-    <p id="infoText">Info will appear here...</p>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="assets/logo.png" class="logo" alt="NeuroTech Logo">
+    <span class="nav-title">NeuroTech @ UIUC</span>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.152.2/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://unpkg.com/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
-  <script src="script.js"></script>
+  <ul class="nav-links">
+    <li><a href="index.html" style="color:#ff552e;">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="team.html">NeuroHack</a></li>
+    <li><a href="mnc.html">MNC</a></li>
+    <li><a href="join.html">Join</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-  <script>
-    // Overlay Interaction for Brain Embed
-    const overlay = document.getElementById("brainOverlay");
-    const brainFrame = document.getElementById("brainFrame");
+<main class="homepage">
 
+<!-- HERO -->
+<section class="hero-about">
+  <h1>Building the Future of Brain–Computer Technology</h1>
+  <p>NeuroTech @ UIUC is a student-led organization advancing neurotechnology through research, engineering, and innovation.</p>
+
+  <div class="hero-buttons">
+    <a href="projects.html" class="btn-primary">Explore NeuroTech</a>
+    <a href="join.html" class="btn-outline">Join NeuroTech</a>
+  </div>
+</section>
+
+<!-- WHO WE ARE + INTERACTIVE BRAIN -->
+<section class="who-we-are">
+
+  <div id="brain-section">
+    <div id="brainOverlay" class="brain-overlay">
+      <h2>Interactive Brain</h2>
+      <p class="click-to-start">Click to Explore</p>
+    </div>
+
+    <iframe
+      id="brainFrame"
+      src="https://sketchfab.com/models/c427ea0aee214141a78eba37bf9b76bb/embed"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="who-text">
+    <h2>Who We Are</h2>
+    <p>
+      NeuroTech @ UIUC is an interdisciplinary student organization where engineers, neuroscientists, designers, and
+      developers collaborate on real neurotechnology systems. Our project teams work on VR-EEG neurofeedback for ADHD,
+      EEG-driven emotion classification, neural data science, BCI-based chatbots, neuroprosthetic prototypes, immersive
+      education platforms, and public science communication through podcasts and publications. Members gain hands-on
+      experience building working neurotech systems while learning machine learning, signal processing, hardware
+      integration, and human-centered design.
+    </p>
+  </div>
+
+</section>
+
+<!-- MNC -->
+<section class="mnc-highlight">
+  <h2>Midwest NeuroTechnology Conference 2026</h2>
+  <p>March 27–29, 2026 • Hosted at UIUC</p>
+  <a href="mnc.html" class="btn-primary">View MNC 2026</a>
+</section>
+
+<!-- EXPLORE -->
+<section class="nav-portal">
+  <h2>Explore NeuroTech @ UIUC</h2>
+  <div class="portal-grid">
+    <a href="projects.html">Projects</a>
+    <a href="events.html">Events</a>
+    <a href="team.html">NeuroHack</a>
+    <a href="mnc.html">MNC</a>
+    <a href="join.html">Join</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final-cta">
+  <h2>Join the NeuroTech Movement</h2>
+  <a href="join.html" class="btn-primary">Become a Member</a>
+</section>
+
+</main>
+
+<div id="floaty-layer"></div>
+
+<!-- ✅ SCRIPT THAT RE-ENABLES BRAIN INTERACTIVITY -->
+<script>
+  const overlay = document.getElementById("brainOverlay");
+  const brainFrame = document.getElementById("brainFrame");
+
+  if (overlay && brainFrame) {
     overlay.addEventListener("click", () => {
       overlay.classList.add("hidden");
-      const iframe = brainFrame;
-      const client = new window.Sketchfab(iframe);
+
+      // Tell Sketchfab iframe to start playback
       setTimeout(() => {
-        iframe.contentWindow.postMessage({ target: 'api.frame', method: 'start' }, '*');
-      }, 1000);
+        brainFrame.contentWindow.postMessage(
+          { target: 'api.frame', method: 'start' },
+          '*'
+        );
+      }, 500);
     });
-  </script>
-  <div id="floaty-layer"></div>
+  }
+</script>
+
 </body>
 </html>

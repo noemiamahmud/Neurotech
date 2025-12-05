@@ -1,282 +1,101 @@
-/* ========================
-   🔧 Global Reset
-======================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    width: 100%;
-    height: 100%;
-    font-family: "Poppins", sans-serif;
-    background-color: #000;
-    color: #fff;
-    overflow: hidden;
-  }
-  
-  /* ========================
-     🧭 Navbar
-  ======================== */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(6px);
-    z-index: 10;
-    color: #fff;
-  }
-  
-  .logo {
-    height: 40px;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-  
-  .nav-links a:hover {
-    color: #ff552e;
-  }
-  
-  /* ========================
-     🧠 Brain Canvas Section
-  ======================== */
-  #brain-section {
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  /* The Three.js brain canvas fills the full screen */
-  #brainCanvas {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  #brainCanvas canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    cursor: pointer; /* Interactivity hint */
-  }
-  
-  /* ========================
-     💬 Tooltip (Learn More)
-  ======================== */
-  #infoCard {
-    position: fixed;
-    min-width: 280px;
-    max-width: 360px;
-    padding: 1rem 1.2rem;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 0 8px 30px rgba(255, 85, 46, 0.25);
-    transform: translate(-50%, -110%);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    opacity: 1;
-  }
-  
-  #infoCard.hidden {
-    display: none;
-    opacity: 0;
-  }
-  
-  #infoCard h3 {
-    margin: 0 0 0.25rem 0;
-    color: #ff552e;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-  
-  #infoCard p {
-    margin: 0;
-    color: #ddd;
-    line-height: 1.4;
-    font-size: 0.95rem;
-  }
-  
-  /* ========================
-     ✨ Animated Marker Style
-  ======================== */
-  
-  /* Optional: glowing pulse for hotspots */
-  @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.85; }
-    50% { transform: scale(1.4); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.85; }
-  }
-  
-  /* This class can be added to marker meshes for glow-like effect in CSS-based overlays if you ever overlay DOM markers */
-  .marker {
-    animation: pulse 1.5s infinite ease-in-out;
-  }
-  
-  /* ========================
-     📦 Optional Sketchfab Styling
-  ======================== */
-  .brain-embed iframe {
-    width: 100vw;
-    height: 100vh;
-    border: none;
-  }
-  
-  .sketchfab-embed-wrapper p {
-    display: none !important;
-  }
-  /* ========================
-   🧠 Floating Header Message
-======================== */
-.brain-header {
-    position: absolute;
-    top: 6rem; /* pushes below navbar */
-    width: 100%;
-    text-align: center;
-    z-index: 20;
-    pointer-events: none; /* prevents blocking clicks on the 3D brain */
-  }
-  
-  .brain-header h1 {
-    font-size: 1.8rem;
-    color: #ff552e;
-    text-shadow: 0 0 12px rgba(255, 85, 46, 0.4);
-    letter-spacing: 0.5px;
-    animation: fadeIn 2s ease-in-out;
-  }
-  
-  /* Subtle fade-in animation */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  /* ========================
-   🧠 Overlay “Play” Screen
-======================== */
-.brain-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #ff552e;
-    text-align: center;
-    z-index: 15;
-    cursor: pointer;
-    transition: opacity 0.6s ease;
-  }
-  
-  .brain-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .brain-overlay h1 {
-    font-size: 1.9rem;
-    margin-bottom: 0.8rem;
-    background: linear-gradient(90deg, #ff552e, #ff9966);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 12px rgba(255, 85, 46, 0.4);
-  }
-  
-  .click-to-start {
-    font-size: 1rem;
-    color: #ccc;
-    animation: pulseText 2s infinite;
-  }
-  
-  @keyframes pulseText {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-  }
-  /* ============================
-   ✨ Floating Text Bubbles
-============================ */
-.floating-text {
-  position: absolute;
-  font-size: 1rem;
-  color: #ff784e;
-  font-weight: 500;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(0) scale(0.9);
-  animation: floatUp 2.2s ease-out forwards;
-  text-shadow: 0 0 10px rgba(255, 85, 46, 0.5);
-  z-index: 500;
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidden}
+
+/* NAV */
+.navbar{
+  position:fixed;top:0;width:100%;
+  padding:1rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(0,0,0,.85);z-index:1000;
+}
+.nav-left{display:flex;align-items:center;gap:1rem}
+.logo{width:42px;height:42px;object-fit:contain}
+.nav-title{font-weight:600}
+.nav-links{list-style:none;display:flex;gap:2rem}
+.nav-links a{text-decoration:none;color:white}
+.nav-links a:hover{color:#ff552e}
+
+/* HERO */
+.hero-about{
+  min-height:100vh;
+  padding-top:12rem;
+  padding-bottom:6rem;
+  text-align:center;
+}
+.hero-about h1{color:#ff784e;font-size:3rem;margin-bottom:1.4rem}
+.hero-about p{max-width:800px;margin:0 auto;font-size:1.15rem;color:#ddd}
+.hero-buttons{
+  margin-top:3rem;
+  display:flex;gap:2rem;justify-content:center;
 }
 
-@keyframes floatUp {
-  0% {
-    opacity: 0.9;
-    transform: translateY(0) scale(1);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(-40px) scale(1.05);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-60px) scale(1.1);
-  }
+/* BUTTONS */
+.btn-primary{
+  background:#ff552e;color:black;font-weight:600;
+  padding:.95rem 2.4rem;border-radius:40px;text-decoration:none;
 }
-/* Floating text container overlay */
-/* ============================
-   ✨ Floating Click Layer & Text
-============================ */
-#floaty-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none; /* allow clicks to go through */
-  z-index: 50; /* above iframe but below navbar */
+.btn-outline{
+  border:2px solid #ff552e;color:white;
+  padding:.95rem 2.4rem;border-radius:40px;text-decoration:none;
 }
 
-.floating-text {
-  position: absolute;
-  font-size: 1rem;
-  color: #ff784e;
-  font-weight: 600;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(0) scale(0.9);
-  animation: floatUp 2.2s ease-out forwards;
-  text-shadow: 0 0 10px rgba(255, 85, 46, 0.5);
-  user-select: none;
+/* WHO WE ARE */
+.who-we-are{
+  padding:8rem 10%;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
 }
 
-@keyframes floatUp {
-  0% { opacity: 0.9; transform: translateY(0) scale(1); }
-  70% { opacity: 1; transform: translateY(-40px) scale(1.05); }
-  100% { opacity: 0; transform: translateY(-60px) scale(1.1); }
+/* MINI BRAIN */
+#brain-section{
+  height:480px;position:relative;border-radius:20px;overflow:hidden;
+}
+#brain-section iframe{width:100%;height:100%;border:none}
+.brain-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:rgba(0,0,0,.75);
+  color:#ff552e;z-index:10;text-align:center;
+  transition:opacity .4s ease;
+}
+.brain-overlay.hidden{opacity:0;pointer-events:none}
+.click-to-start{color:#ccc;margin-top:.5rem}
+
+/* TEXT */
+.who-text h2{font-size:2.2rem;margin-bottom:1rem;color:white}
+.who-text p{font-size:1.15rem;line-height:1.7;color:#ccc}
+
+/* MNC */
+.mnc-highlight{
+  padding:8rem 10%;
+  text-align:center;background:#111;
+}
+.mnc-highlight h2{font-size:2.2rem;margin-bottom:.8rem}
+.mnc-highlight p{color:#ccc;margin-bottom:2.5rem}
+
+/* NAV PORTAL */
+.nav-portal{
+  padding:8rem 10%;text-align:center;background:#000;
+}
+.portal-grid{
+  margin-top:2.5rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2rem;
+}
+.portal-grid a{
+  background:rgba(255,255,255,.06);
+  padding:2rem;border-radius:16px;text-decoration:none;color:white;
 }
 
+/* CTA */
+.final-cta{
+  padding:8rem 10%;text-align:center;background:#000;
+}
+.final-cta h2{font-size:2.2rem;margin-bottom:2rem}
+
+/* MOBILE */
+@media(max-width:900px){
+  .who-we-are{grid-template-columns:1fr;padding-top:4rem}
+  .hero-about h1{font-size:2.2rem}
+  .hero-about p{font-size:1rem}
+}
