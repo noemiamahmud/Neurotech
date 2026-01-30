@@ -2,7 +2,7 @@ const chat = document.getElementById("chat");
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// Cloudflare Worker endpoint (API)
+// Cloudflare Worker endpoint
 const API_URL = "https://neurotech-match-bot.noemiamahmud.workers.dev";
 
 let chatState = {
@@ -37,11 +37,15 @@ function startChat() {
   chatState = { messages: [], phase: "collecting" };
 
   const opener =
-    "Hi! I’ll help you find the best NeuroTech @ UIUC team. Share 2–3 interests (ex: EEG, ML, VR, writing/media, robotics, rehab research) and what you want to learn.";
+    "Hi! I’ll help you find the best NeuroTech @ UIUC team.\n\n" +
+    "In 1–2 sentences, tell me:\n" +
+    "• 2–3 interests (EEG/BCI, ML/AI, VR/XR, writing/media, robotics/hardware, research/rehab)\n" +
+    "• and what you want to get out of the team (build something, learn, research, create content).";
 
   addBotMessage(opener);
-  // keep minimal context for the model
   chatState.messages.push({ role: "assistant", content: opener });
+
+  input.focus();
 }
 
 sendBtn.addEventListener("click", handleUserInput);
@@ -86,7 +90,6 @@ async function callLLM() {
       body: JSON.stringify({ messages: chatState.messages }),
     });
 
-    // helpful if something goes wrong
     if (!res.ok) {
       const errText = await res.text();
       console.error("Worker error:", res.status, errText);
@@ -115,7 +118,6 @@ async function callLLM() {
       return;
     }
 
-    // Unexpected format
     console.warn("Unexpected response shape:", data);
     addBotMessage('Hmm—unexpected response. Try again, or type "reset".');
   } catch (err) {
