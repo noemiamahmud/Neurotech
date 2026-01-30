@@ -1,7 +1,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidden}
 
-/* NAV */
+
 .navbar{
   position:fixed;top:0;width:100%;
   padding:1rem 3rem;
@@ -15,7 +15,7 @@ body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidd
 .nav-links a{text-decoration:none;color:white}
 .nav-links a:hover{color:#ff552e}
 
-/* HERO */
+
 .hero-about{
   min-height:100vh;
   padding-top:12rem;
@@ -29,7 +29,6 @@ body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidd
   display:flex;gap:2rem;justify-content:center;
 }
 
-/* BUTTONS */
 .btn-primary{
   background:#ff552e;color:black;font-weight:600;
   padding:.95rem 2.4rem;border-radius:40px;text-decoration:none;
@@ -39,14 +38,13 @@ body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidd
   padding:.95rem 2.4rem;border-radius:40px;text-decoration:none;
 }
 
-/* WHO WE ARE */
 .who-we-are{
   padding:8rem 10%;
   display:grid;grid-template-columns:1fr 1fr;
   gap:4rem;align-items:center;
 }
 
-/* MINI BRAIN */
+
 #brain-section{
   height:480px;position:relative;border-radius:20px;overflow:hidden;
 }
@@ -61,11 +59,11 @@ body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidd
 .brain-overlay.hidden{opacity:0;pointer-events:none}
 .click-to-start{color:#ccc;margin-top:.5rem}
 
-/* TEXT */
+
 .who-text h2{font-size:2.2rem;margin-bottom:1rem;color:white}
 .who-text p{font-size:1.15rem;line-height:1.7;color:#ccc}
 
-/* MNC */
+
 .mnc-highlight{
   padding:8rem 10%;
   text-align:center;background:#111;
@@ -73,7 +71,7 @@ body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidd
 .mnc-highlight h2{font-size:2.2rem;margin-bottom:.8rem}
 .mnc-highlight p{color:#ccc;margin-bottom:2.5rem}
 
-/* NAV PORTAL */
+
 .nav-portal{
   padding:8rem 10%;text-align:center;background:#000;
 }
@@ -87,15 +85,77 @@ body{font-family:Poppins,sans-serif;background:black;color:white;overflow-x:hidd
   padding:2rem;border-radius:16px;text-decoration:none;color:white;
 }
 
-/* CTA */
+
 .final-cta{
   padding:8rem 10%;text-align:center;background:#000;
 }
 .final-cta h2{font-size:2.2rem;margin-bottom:2rem}
 
-/* MOBILE */
+
 @media(max-width:900px){
   .who-we-are{grid-template-columns:1fr;padding-top:4rem}
   .hero-about h1{font-size:2.2rem}
   .hero-about p{font-size:1rem}
+}
+
+#chat-container {
+  max-width: 640px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+
+.bot-message {
+  align-self: flex-start;
+  background: #111;
+  border: 1px solid #ff552e;
+  padding: 0.9rem 1.2rem;
+  border-radius: 16px;
+  color: #ddd;
+  max-width: 85%;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: #ff552e;
+  color: black;
+  padding: 0.9rem 1.2rem;
+  border-radius: 16px;
+  max-width: 85%;
+  font-weight: 500;
+}
+
+
+#chat-input {
+  display: flex;
+  gap: 0.6rem;
+}
+
+#chat-input input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+}
+
+#chat-input button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 20px;
+  border: none;
+  background: #ff552e;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
 }
