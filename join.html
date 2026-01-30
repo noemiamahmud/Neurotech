@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join NeuroTech UIUC</title>
+
+  <!-- Global theme -->
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
   <style>
     /* ==== BASE ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     html, body {
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, #000, #080808);
-      color: white;
+      background: radial-gradient(circle at top, #1d1c1f, #161517);
+      color: #fff;
       font-family: "Poppins", sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
@@ -33,66 +33,88 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
+      background: rgba(22,21,23,0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       z-index: 100;
     }
+
+    .logo {
+      height: 40px;
+      filter: drop-shadow(0 0 10px rgba(233,205,209,.15));
+    }
+
     .nav-links {
       list-style: none;
       display: flex;
       gap: 2rem;
     }
+
     .nav-links a {
       text-decoration: none;
-      color: white;
+      color: rgba(255,255,255,.85);
       font-weight: 500;
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
     }
+
     .nav-links a:hover {
-      color: #ff552e;
+      color: #E9CDD1;
+      text-shadow: 0 0 12px rgba(233,205,209,.25);
     }
 
     /* ==== MAIN SECTION ==== */
     main {
-      margin-top: 7rem;
+      margin-top: 7.5rem;
       padding: 2rem;
       text-align: center;
     }
 
     h1 {
-  font-size: 2.8rem;
-  background: linear-gradient(90deg, #ff552e, #ff9966);
-  background-clip: text;            /* ← Standard property (for Firefox, Edge, etc.) */
-  -webkit-background-clip: text;    /* ← WebKit version (for Chrome, Safari) */
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-  animation: float 3s ease-in-out infinite;
-}
-
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(
+        90deg,
+        #E9CDD1,
+        #8F7DA1,
+        #6794A1
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 3s ease-in-out infinite;
+      text-shadow: 0 0 30px rgba(233,205,209,.15);
+    }
 
     h2 {
       font-size: 1.3rem;
-      color: #ccc;
+      color: rgba(255,255,255,.7);
       margin-bottom: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
     }
 
     /* ==== CTA BUTTON ==== */
     .cta-btn {
-      background: linear-gradient(90deg, #ff552e, #ff9966);
-      color: white;
+      background: linear-gradient(135deg, #8F7DA1, #6794A1);
+      color: #fff;
       border: none;
-      padding: 1rem 2.5rem;
+      padding: 1rem 2.8rem;
       font-size: 1.1rem;
       border-radius: 50px;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 0 20px rgba(255, 85, 46, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow:
+        0 0 0 rgba(0,0,0,0),
+        0 12px 30px rgba(143,125,161,.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: inline-block;
     }
+
     .cta-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 85, 46, 0.6);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 20px 45px rgba(103,148,161,.45);
     }
 
     /* ==== LINKS SECTION ==== */
@@ -106,43 +128,62 @@
     }
 
     .join-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.06),
+        rgba(74,108,105,.12)
+      );
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      padding: 2.2rem;
       width: 280px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 15px 35px rgba(0,0,0,.35);
     }
+
     .join-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(255, 85, 46, 0.3);
+      box-shadow: 0 25px 50px rgba(143,125,161,.45);
     }
 
     .join-card h3 {
-      color: #ff9966;
+      color: #E9CDD1;
       margin-bottom: 1rem;
+      font-size: 1.25rem;
+      text-shadow: 0 0 12px rgba(233,205,209,.25);
     }
 
     .qr-container {
-      margin: 1rem auto;
+      margin: 1.2rem auto;
       width: 150px;
       height: 150px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.4);
+      padding: 0.5rem;
     }
 
     .link-btn {
       display: inline-block;
       margin-top: 1rem;
-      color: #1caad9;
+      color: #6794A1;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
     }
+
     .link-btn:hover {
-      text-decoration: underline;
+      color: #E9CDD1;
+      text-shadow: 0 0 10px rgba(233,205,209,.35);
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -156,9 +197,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="events.html">Events</a></li>
-      <li><a href="team.html">NeuroHack</a></li>
       <li><a href="mnc.html">MNC</a></li>
-      <li><a href="join.html" style="color: #ff552e;">Join</a></li>
+      <li><a href="join.html" style="color:#E9CDD1; text-shadow:0 0 12px rgba(233,205,209,.25);">Join</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="match.html">Find Your Team</a></li>
     </ul>
@@ -169,45 +209,61 @@
     <h1>Join NeuroTech UIUC</h1>
     <h2>Become a part of the next generation of innovators bridging neuroscience and technology</h2>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScU08_XQa5nSM7fXfIRmsrbsAnt8I0Yv6-zqVgkcdBToHZxgQ/viewform" target="_blank" class="cta-btn">Apply Here</a>
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLScU08_XQa5nSM7fXfIRmsrbsAnt8I0Yv6-zqVgkcdBToHZxgQ/viewform"
+      target="_blank"
+      class="cta-btn"
+    >
+      Apply Here
+    </a>
 
     <div class="links-container">
       <!-- Instagram -->
       <div class="join-card">
         <h3>Follow us on Instagram</h3>
         <div class="qr-container" id="instaQR"></div>
-        <a href="https://www.instagram.com/neurotech.uiuc/?hl=en" target="_blank" class="link-btn">@neurotech.uiuc</a>
+        <a
+          href="https://www.instagram.com/neurotech.uiuc/?hl=en"
+          target="_blank"
+          class="link-btn"
+        >
+          @neurotech.uiuc
+        </a>
       </div>
 
       <!-- Discord -->
       <div class="join-card">
         <h3>Join our Discord</h3>
         <div class="qr-container" id="discordQR"></div>
-        <a href="https://discord.gg/zJEGPVQh" target="_blank" class="link-btn">Join Discord Community</a>
+        <a
+          href="https://discord.gg/zJEGPVQh"
+          target="_blank"
+          class="link-btn"
+        >
+          Join Discord Community
+        </a>
       </div>
     </div>
   </main>
 
   <script>
-    // === Replace these with your real URLs ===
     const instagramURL = "https://www.instagram.com/neurotech.uiuc/?hl=en";
     const discordURL = "https://discord.gg/zJEGPVQh";
 
-    // === Generate QR Codes ===
     new QRCode(document.getElementById("instaQR"), {
       text: instagramURL,
       width: 150,
       height: 150,
-      colorDark: "#ff552e",
-      colorLight: "#000000",
+      colorDark: "#E9CDD1",
+      colorLight: "#161517",
     });
 
     new QRCode(document.getElementById("discordQR"), {
       text: discordURL,
       width: 150,
       height: 150,
-      colorDark: "#7289da",
-      colorLight: "#000000",
+      colorDark: "#6794A1",
+      colorLight: "#161517",
     });
   </script>
 </body>

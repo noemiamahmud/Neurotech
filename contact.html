@@ -8,6 +8,8 @@
   <style>
     /* ========================
        🔧 Reset & Base
+       Uses the site-wide theme vars from styles.css:
+       --bg, --text, --text-muted, --rose, --accent, etc.
     ======================== */
     * {
       margin: 0;
@@ -21,8 +23,8 @@
 
     body {
       font-family: "Poppins", sans-serif;
-      background-color: #000;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
       overflow-y: auto;
     }
 
@@ -38,14 +40,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
+      background: rgba(22, 21, 23, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
       z-index: 10;
-      color: #fff;
+      color: var(--text);
     }
 
     .logo {
       height: 40px;
+      filter: drop-shadow(0 0 10px rgba(233,205,209,.15));
     }
 
     .nav-links {
@@ -56,14 +60,15 @@
 
     .nav-links a {
       text-decoration: none;
-      color: white;
+      color: rgba(255,255,255,.82);
       font-weight: 500;
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      color: #ff552e;
+      color: var(--rose);
+      text-shadow: 0 0 12px rgba(233,205,209,.25);
     }
 
     /* ========================
@@ -80,18 +85,23 @@
 
     h2.page-title {
       font-size: 2rem;
-      color: #ff552e;
       margin-bottom: 1.5rem;
       text-align: center;
+      background: linear-gradient(90deg, var(--rose), var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 24px rgba(233,205,209,.10);
     }
 
     .contact-form {
       width: 90%;
       max-width: 700px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(103,148,161,.08));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
       padding: 2rem;
-      box-shadow: 0 0 20px rgba(255, 85, 46, 0.25);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
     }
 
     .form-group {
@@ -102,21 +112,30 @@
 
     label {
       margin-bottom: 0.4rem;
-      font-weight: 500;
-      color: #ff552e;
+      font-weight: 600;
+      color: var(--rose);
+      letter-spacing: .2px;
     }
 
     input, select, textarea {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
+      padding: 0.85rem 0.9rem;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
       font-size: 1rem;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(255,255,255,.45);
     }
 
     input:focus, select:focus, textarea:focus {
-      outline: 2px solid #ff552e;
+      outline: none;
+      border-color: rgba(233,205,209,.35);
+      box-shadow: 0 0 0 4px rgba(233,205,209,.10);
+      background: rgba(255,255,255,.08);
     }
 
     textarea {
@@ -125,21 +144,24 @@
     }
 
     button {
-      background: #ff552e;
-      color: #fff;
-      border: none;
-      padding: 0.9rem 1.5rem;
-      border-radius: 8px;
+      background: linear-gradient(90deg, var(--rose), var(--accent));
+      color: #0f0f12;
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 0.95rem 1.5rem;
+      border-radius: 12px;
       cursor: pointer;
       font-size: 1rem;
-      font-weight: 600;
-      transition: background 0.3s ease;
+      font-weight: 800;
+      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
       width: 100%;
       margin-top: 0.5rem;
+      box-shadow: 0 12px 35px rgba(103,148,161,.20);
     }
 
     button:hover {
-      background: #ff754f;
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+      box-shadow: 0 16px 45px rgba(103,148,161,.26);
     }
 
     .contact-list {
@@ -148,27 +170,28 @@
     }
 
     .contact-list h3 {
-      color: #ff552e;
+      color: var(--rose);
       margin-bottom: 1rem;
       font-size: 1.3rem;
+      text-shadow: 0 0 14px rgba(233,205,209,.12);
     }
 
     .contact-item {
       margin-bottom: 1rem;
-      color: #ccc;
+      color: var(--text-muted);
       line-height: 1.5;
     }
 
     .contact-item strong {
-      color: #fff;
+      color: var(--text);
     }
 
     footer {
       text-align: center;
-      color: #aaa;
+      color: rgba(255,255,255,.60);
       font-size: 0.9rem;
       padding: 2rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
       margin-top: 3rem;
       width: 100%;
       max-width: 1200px;
@@ -182,36 +205,44 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.9);
-      border: 1px solid #ff552e;
+      background: rgba(22, 21, 23, 0.92);
+      border: 1px solid rgba(233,205,209,.35);
       padding: 1.5rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 85, 46, 0.4);
-      color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(233,205,209,.18), 0 18px 60px rgba(0,0,0,.45);
+      color: var(--text);
       font-size: 1.1rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
       z-index: 999;
       text-align: center;
+      backdrop-filter: blur(10px);
     }
 
     .success-popup.show {
       opacity: 1;
       pointer-events: auto;
     }
-    .link-highlight {
-  color: #fe8d73;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
 
-.link-highlight:hover {
-  color: #ffa37f;
-  text-shadow: 0 0 8px rgba(255, 85, 46, 0.6);
-}
+    .link-highlight {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .link-highlight:hover {
+      color: var(--rose);
+      text-shadow: 0 0 10px rgba(233,205,209,.25);
+    }
   </style>
+
+  <!-- IMPORTANT: this assumes you already link styles.css somewhere globally.
+       If this page doesn't already, add:
+       <link rel="stylesheet" href="styles.css" />
+  -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -223,7 +254,6 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="events.html">Events</a></li>
-      <li><a href="team.html">NeuroHack</a></li>
       <li><a href="mnc.html">MNC</a></li>
       <li><a href="join.html">Join</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
@@ -272,12 +302,12 @@
 
     <!-- 📞 Contact List -->
     <div class="contact-list">
-        <h2>Project Manager Contacts</h2>
-        <h3>
-          can be found on our 
-          <a href="projects.html" class="link-highlight">Projects</a> page!
-        </h3>
-      </div>      
+      <h2>Project Manager Contacts</h2>
+      <h3>
+        can be found on our
+        <a href="projects.html" class="link-highlight">Projects</a> page!
+      </h3>
+    </div>
 
     <footer>
       <p>NeuroTech UIUC © 2025 | Messages sent via secure form</p>

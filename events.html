@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NeuroTech UIUC | Events</title>
+
+  <!-- Uses your new global theme vars from styles.css -->
   <link rel="stylesheet" href="styles.css" />
+
   <style>
     /* ==== RESET ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       overflow-y: auto;
@@ -21,8 +20,8 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
       font-family: "Poppins", sans-serif;
-      background-color: #000;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
     }
 
     /* ==== NAVBAR ==== */
@@ -35,13 +34,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
+      background: rgba(22, 21, 23, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
       z-index: 100;
     }
 
     .logo {
       height: 40px;
+      filter: drop-shadow(0 0 10px rgba(233,205,209,.15));
     }
 
     .nav-links {
@@ -52,13 +53,14 @@
 
     .nav-links a {
       text-decoration: none;
-      color: white;
+      color: rgba(255,255,255,.82);
       font-weight: 500;
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: #ff552e;
+      color: var(--rose);
+      text-shadow: 0 0 12px rgba(233,205,209,.22);
     }
 
     /* ==== EVENTS SECTION ==== */
@@ -72,41 +74,48 @@
     }
 
     h1 {
-      color: #ff552e;
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 2rem;
+      background: linear-gradient(90deg, var(--rose), var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 24px rgba(233,205,209,.10);
     }
 
     .calendar-container {
       width: 90%;
       max-width: 1000px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(103,148,161,.08));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 4px 25px rgba(255, 85, 46, 0.2);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
     }
 
     iframe {
       width: 100%;
       height: 700px;
       border: none;
-      background-color: #000;
+      background-color: transparent;
+      filter: saturate(0.98) contrast(1.02);
     }
 
     footer {
       margin-top: 3rem;
-      font-size: 0.85rem;
-      color: #888;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,.62);
+      max-width: 900px;
+      line-height: 1.6;
     }
 
     @media (max-width: 768px) {
-      iframe {
-        height: 500px;
-      }
+      iframe { height: 500px; }
+      h1 { font-size: 1.9rem; }
     }
   </style>
 </head>
+
 <body>
   <!-- NAVBAR -->
   <nav class="navbar">
@@ -115,8 +124,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="events.html" style="color:#ff552e;">Events</a></li>
-      <li><a href="team.html">NeuroHack</a></li>
+      <li><a href="events.html" style="color: var(--rose); text-shadow: 0 0 12px rgba(233,205,209,.22);">Events</a></li>
       <li><a href="mnc.html">MNC</a></li>
       <li><a href="join.html">Join</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -127,14 +135,15 @@
   <!-- MAIN CONTENT -->
   <main>
     <h1>Upcoming Events</h1>
+
     <div class="calendar-container">
-      <!-- Replace YOUR_CALENDAR_LINK with your shared Google Calendar embed link -->
-      <iframe 
+      <iframe
         src="https://calendar.google.com/calendar/embed?src=ab783766334e7efa587c48d2ebe939e14b8017788143754c60081727cd503621%40group.calendar.google.com&ctz=America%2FChicago"
         frameborder="0"
         scrolling="no">
       </iframe>
     </div>
+
     <footer>
       <p>All events are hosted by NeuroTech UIUC. Stay tuned for workshops, demos, and hackathons!</p>
     </footer>
